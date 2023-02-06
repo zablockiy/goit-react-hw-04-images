@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 import styles from './searchbar.module.css';
 
@@ -9,10 +10,10 @@ export default class Searchbar extends Component {
   }
 
   handleChangeName = e => {
-   
+
        this.setState({ imgName: e.currentTarget.value.toLowerCase() })
-    
-   
+
+
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -48,4 +49,8 @@ export default class Searchbar extends Component {
   }
 
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
