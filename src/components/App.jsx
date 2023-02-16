@@ -43,14 +43,17 @@ const App =()=> {
     setPage(prevState => prevState + 1)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
+    
+    if (!searchName) return;
 
     const getImages = async (searchName, page) => {
       try {
         setIsLoading(true)
         const images = await API.loadImage(searchName, page);
 
-        setItems(prevState => [...prevState.items, ...images]);
+
+        setItems(prevState => [...prevState, ...images]);
         setIsLoading(false);
         if (images.length === 0) {
           alert("Sorry, we can't find anyting for your request. Please, enter another request");
