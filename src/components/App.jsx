@@ -29,12 +29,16 @@ const App =()=> {
     setLargeImg('');
   }
 
-  const handleFormSubmit = (searchName) => {
-    if(searchName.trim().length === 0) {
+  const handleFormSubmit = (name) => {
+    if(name.trim().length === 0) {
       alert('Please, enter request');
       return;
     }
-    setSearchName(searchName);
+    if (name === searchName) {
+      alert('Please, enter new request');
+      return;
+    }
+    setSearchName(name);
     setPage(1);
     setItems([])
   }
@@ -76,7 +80,7 @@ const App =()=> {
         {items.length > 0 &&  <ImageGallery items={items}  onClick={openModalOpen} searchName={searchName}/>}
         {isLoading && <Loader />}
         {items.length >= 12 && <Button onClick={handleLoadMore} isLoading={isLoading}/>}
-        {largeImg && (<Modal onClose={onModalClose} url={largeImg}/>)}
+        {largeImg && (<Modal onClose={onModalClose} imageModal={largeImg}/>)}
       </div>
     );
 
