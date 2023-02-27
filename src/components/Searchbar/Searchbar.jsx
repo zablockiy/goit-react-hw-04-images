@@ -28,7 +28,7 @@ const Searchbar= ({onSubmit})=> {
           className={styles.form}
           onSubmit={handleSubmit}>
           <button type="submit" className={styles.button}>
-            Search
+            <span className={styles.button_text}>Find</span>
           </button>
 
 
